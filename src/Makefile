@@ -21,7 +21,7 @@ PREFLAGS  = -std=c++17
 
 all: makedirs
 	@echo [CC] $@
-	@$(COMPILER) bloom_filter/bloom_filter.cpp main.cpp $(PREFLAGS) -o $(TARGDIR)/main
+	@$(COMPILER) main.cpp $(PREFLAGS) -o $(TARGDIR)/main
 
 
 clean:

@@ -4,13 +4,16 @@
 #include <math.h>
 #include <sstream>
 #include <string>
-#include "olap/olap_define.h"
-#include "olap/utils.h"
-#include "util/hash_util.hpp"
+
+#include "hash_util.h"
+
+#include "common_define.h"
+
 
 
 static const uint64_t DEFAULT_SEED = 104729;
 static const uint64_t BLOOM_FILTER_NULL_HASHCODE = 2862933555777941757ULL;
+static const double BLOOM_FILTER_DEFAULT_FPP = 0.05;
 
 struct BloomFilterIndexHeader {
     uint64_t block_count;
@@ -103,7 +106,7 @@ public:
     BloomFilter() : _bit_num(0), _hash_function_num(0) {}
     ~BloomFilter() {}
 
-    // Create BloomFilter with given entry num and fpp, which is used for loading data
+    // Create BloomFilter with given entry num and fpp(False Positive Probability), which is used for loading data
     bool init(int64_t expected_entries, double fpp) {
         uint32_t bit_num = _optimal_bit_num(expected_entries, fpp);
         if (!_bit_set.init(bit_num)) {
