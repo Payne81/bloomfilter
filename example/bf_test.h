@@ -1,7 +1,7 @@
 #pragma once 
 
 #include <iostream>
-#include "../bloom_filter/bloom_filter.h"
+#include "../src/bloom_filter.h"
 
 
 void bf_test() {

@@ -1,6 +1,6 @@
 ##########################
 
-INCDIR    = bloom_filter
+INCDIR    = src
 TARGDIR	  = bin
 COMPILER  = g++
 
@@ -21,12 +21,13 @@ PREFLAGS  = -std=c++17
 
 all: makedirs
 	@echo [CC] $@
-	@$(COMPILER) main.cpp $(PREFLAGS) -o $(TARGDIR)/main
+	@$(COMPILER) example/example.cpp $(PREFLAGS) -o $(TARGDIR)/example
 
 
 clean:
 	@echo target files:
 	-rm -f $(TARGDIR)/*
+	-rm -rf $(TARGDIR)
 
 
 makedirs:
